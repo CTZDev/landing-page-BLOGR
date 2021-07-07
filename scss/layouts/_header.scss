@@ -1,0 +1,255 @@
+@use '../abstracts' as *;
+
+.main-header {
+  @include lengthSpace();
+  position: relative;
+  z-index: 2;
+  padding: 3em 0 2em;
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+  }
+
+  @include mq(medium) {
+    padding-bottom: 0;
+  }
+}
+
+.menu-hamburguer {
+  display: block;
+  padding: 0.2em;
+  width: 2.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.4s ease-in;
+
+  &::before,
+  &::after {
+    content: "";
+    width: 90%;
+  }
+
+  .bar,
+  &::before,
+  &::after {
+    display: block;
+    border-radius: 5px;
+    width: 100%;
+    height: 3px;
+    margin: 4px 0;
+    background-color: var(--clr-white);
+    transition: all 0.15s ease-out;
+  }
+
+  &.open::before {
+    transform: rotate(45deg) translate(5px, 4px);
+  }
+
+  &.open::after {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  &.open > .bar {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  @include mq(medium) {
+    display: none;
+  }
+}
+
+.navigation {
+  position: absolute;
+  top: 100%;
+  left: 1.5em;
+  right: 1.5em;
+  background-color: var(--clr-white);
+  box-shadow: 6px 6px 10px -6px #000, -3px 4px 15px -4px #000, 0 2px 6px -6px #000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 200ms ease-in;
+
+  //JS
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .menu {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 1.8em 0;
+
+    a {
+      text-decoration: none;
+      font-size: 1.1em;
+    }
+
+    &-link {
+      padding: 0.5em 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      font-weight: bold;
+      color: var(--clr-blackblue);
+      transition: all 200ms ease;
+
+      &::after {
+        content: url("../images/icon-arrow-dark.svg");
+        display: inline-block;
+        margin-left: 0.5em;
+        transition: all 200ms ease;
+      }
+
+      &.open {
+        color: #6c7f93;
+
+        &::after {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  .submenu {
+    background-color: #efeff1;
+    border-radius: 6px;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 150ms ease-in;
+
+    //JS
+    &.open {
+      opacity: 1;
+      visibility: visible;
+      max-height: 600px;
+      padding: 1.4em 0.5em;
+    }
+
+    &-link {
+      color: #6c7f93;
+      padding: 0.25em;
+    }
+  }
+
+  &-buttons {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 16px;
+    padding: 1.6em 0;
+
+    button {
+      padding-left: 0.7em;
+      padding-right: 0.7em;
+      margin: 0 auto;
+    }
+
+    .btn-signup {
+      color: var(--clr-white);
+      background: linear-gradient(67deg, #ff8f70 17%, #ff3d54 69%);
+
+      &:hover {
+        color: var(--clr-white);
+        background: var(--clr-weakred);
+      }
+    }
+
+    .btn-login {
+      color: var(--clr-blackblue);
+      background-color: var(--clr-white);
+    }
+  }
+
+  @include mq(small) {
+    left: 50%;
+    right: 1.5em;
+  }
+
+  @include mq(medium) {
+    opacity: 1;
+    visibility: visible;
+    position: initial;
+    box-shadow: initial;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 160px);
+    background-color: transparent;
+
+    .menu {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      border-bottom: initial;
+
+      &-item {
+        width: 135px;
+        padding: 0 0.9em;
+      }
+
+      &-link {
+        padding: 0;
+        color: var(--clr-white);
+        border-bottom: 1px solid transparent;
+        transition: all 200ms ease;
+
+        &::after {
+          content: url("../images/icon-arrow-light.svg");
+          display: inline-block;
+          margin-left: 0.5em;
+        }
+
+        &:hover,
+        &.open {
+          border-bottom: 1px solid var(--clr-white);
+          max-width: max-content;
+        }
+
+        &.open {
+          color: var(--clr-white);
+        }
+      }
+    }
+
+    .submenu {
+      position: absolute;
+      top: 100%;
+      padding: 1.5em 0;
+      width: 7.5em;
+
+      &-link {
+        color: var(--clr-blackblue);
+        font-weight: normal;
+
+        &:hover {
+          font-weight: bold;
+        }
+      }
+    }
+
+    &-buttons {
+      flex-direction: row;
+      justify-content: center;
+      padding: initial;
+
+      .btn-login {
+        background-color: transparent;
+        color: var(--clr-white);
+      }
+
+      .btn-signup {
+        color: var(--clr-lightred);
+        background: white;
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+@use '../abstracts' as *;
+
+.infraestructure {
+  @include lengthSpace();
+  margin-bottom: 6em;
+
+  &-phone {
+    margin: 0 auto -11.5em;
+    position: relative;
+    z-index: 900;
+    max-width: 450px;
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+  }
+
+  &-container {
+    border-top-right-radius: 5em;
+    border-bottom-left-radius: 5em;
+    background-image: linear-gradient(162deg, #2c2d3f 13%, #3f4164 98%);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+
+    &::after {
+      content: url("../images/bg-pattern-circles.svg");
+      position: absolute;
+      top: -29rem;
+      bottom: 0;
+      transform: scale(0.54);
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: -1;
+    }
+  }
+
+  &-content {
+    padding: 12.5em 0 6.5em;
+    width: 85%;
+    margin: 0 auto;
+
+    h2 {
+      margin-bottom: 0.8em;
+    }
+    p {
+      color: var(--clr-white);
+    }
+  }
+
+  @include mq(large) {
+    margin-top: 6em;
+    &-phone {
+      position: absolute;
+      margin: 0;
+      transform: translate(8em, -3em);
+    }
+
+    &-container {
+      background-image: linear-gradient(164deg, #2c2d3f 30%, #3f4164 83%);
+
+      &::after {
+        top: -29em;
+        left: -29em;
+        transform: scale(0.85);
+      }
+    }
+
+    &-content {
+      max-width: 800px;
+      margin: 0px 0px 0px auto;
+      padding: 6em calc(1em + 15vw) 6em 0px;
+
+      :is(h2, p) {
+        text-align: left;
+      }
+    }
+  }
+}

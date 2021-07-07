@@ -1,0 +1,163 @@
+@use '../abstracts' as *;
+
+//designed future
+.designed {
+  @include lengthSpace();
+  overflow: hidden;
+
+  > h2 {
+    margin-bottom: 1.2em;
+  }
+
+  picture {
+    transform: scale(1.2);
+    margin-bottom: calc(2.5em + 10vw);
+    transform-origin: 50% 15%;
+
+    img {
+      width: min(600px, 100%);
+      display: block;
+    }
+  }
+
+  @include mq(small) {
+    &-content {
+      padding: calc(0.3em + 5vw) 0;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      grid-template-areas: "contentIntro image";
+      grid-template-columns: 1fr 1fr;
+      gap: 3em;
+    }
+
+    &-graphic {
+      grid-area: image;
+
+      picture {
+        margin: 0;
+        transform: translateX(5em) scale(1.7);
+        transform-origin: 50% 50%;
+        margin: 5.5em 0;
+
+        img {
+          width: min(1400px, 100%);
+        }
+      }
+    }
+
+    &-intro {
+      grid-area: contentIntro;
+      width: 90%;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    &-editor {
+      > * {
+        text-align: left;
+      }
+    }
+
+    &-management {
+      > * {
+        text-align: left;
+      }
+    }
+  }
+
+  @include mq(medium) {
+    &-content {
+      padding: 0;
+    }
+    picture {
+      transform: scale(1.4) translateX(8em);
+    }
+  }
+
+  &-editor,
+  &-management {
+    h2 {
+      margin-bottom: 0.7em;
+    }
+  }
+}
+
+.characteristic {
+  @include lengthSpace();
+  overflow: hidden;
+
+  picture {
+    transform: scale(1.45);
+    margin-bottom: calc(2.5em + 25vw);
+    transform-origin: 50% 15%;
+
+    img {
+      width: min(600px, 100%);
+      display: block;
+    }
+  }
+
+  @include mq(small) {
+    &-content {
+      padding: calc(0.3em + 6vw) 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-content: center;
+      align-items: center;
+
+      picture {
+        transform: translateX(-5.5em) scale(1.9);
+        transform-origin: 50% 50%;
+        margin: 5.5em 0;
+
+        img {
+          width: min(1400px, 100%);
+        }
+      }
+    }
+
+    &-intro {
+      width: 90%;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    &-source {
+      > * {
+        text-align: left;
+      }
+    }
+
+    &-powerful {
+      > * {
+        text-align: left;
+      }
+    }
+  }
+
+  @include mq(medium) {
+    &-content {
+      padding: 0;
+    }
+    picture {
+      transform: scale(1.28) translateX(-6em);
+    }
+  }
+
+  &-source,
+  &-powerful {
+    h2 {
+      margin-bottom: 0.7em;
+    }
+  }
+}
+
+//Shared by both
+:is(.designed-graphic h2, .characteristic-graphic h2) {
+  margin-bottom: 1.5em;
+}
+:is(.designed-graphic picture, .characteristic-graphic picture) {
+  display: flex;
+  justify-content: center;
+}

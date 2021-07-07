@@ -1,0 +1,80 @@
+@use '../abstracts' as *;
+
+.footer {
+  background-color: var(--clr-blackblue);
+  color: var(--clr-grayish-blue);
+  text-align: center;
+  border-top-right-radius: 5em;
+
+  img {
+    padding: 4em 0;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-bottom: 3.5em;
+  }
+
+  &-product,
+  &-company,
+  &-connect {
+    h2 {
+      font-size: 1em;
+      font-weight: bold;
+      margin-bottom: 1em;
+    }
+
+    &-menu {
+      li {
+        list-style: none;
+        padding: 0.2em;
+      }
+      a {
+        display: block;
+        text-decoration: none;
+        color: var(--clr-grayish-blue);
+        border-bottom: 1px solid transparent;
+        transition: border-bottom 150ms ease, transform 150ms ease;
+
+        &:hover {
+          border-bottom: 1px solid var(--clr-white);
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  @include mq(medium) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 4em 0;
+    gap: 10em;
+
+    img {
+      padding: 0;
+    }
+
+    &-content {
+      flex-direction: row;
+      justify-content: center;
+      gap: 10em;
+    }
+  }
+}
+
+//Add extra
+.attribution {
+  text-align: center;
+  background: linear-gradient(-38deg, #ff8f70 50%, #ff3d54 67%);
+  color: var(--clr-white);
+  font-weight: bold;
+  padding: 0.3em;
+
+  a {
+    text-decoration: none;
+    color: var(--clr-weakblue);
+  }
+}

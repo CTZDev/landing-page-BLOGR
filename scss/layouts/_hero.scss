@@ -1,0 +1,67 @@
+@use '../abstracts' as *;
+
+.hero {
+  position: relative;
+  padding-bottom: 650px;
+  margin-top: -8.5em;
+  border-bottom-left-radius: 5em;
+  background: linear-gradient(126deg, #ff8f70, #ff3d54);
+  overflow: hidden;
+  margin-bottom: 6em;
+  z-index: 1;
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    max-width: 900px;
+    background: url(../images/bg-pattern-intro.svg) no-repeat 50%;
+    background-size: cover;
+    transform: scale(2.2);
+    top: 15em;
+    right: 0;
+    bottom: 0;
+    left: 8em;
+    margin: auto;
+    z-index: -1;
+  }
+
+  &-content {
+    text-align: center;
+    position: absolute;
+    top: 58%;
+    left: 0;
+    right: 0;
+    transform: translateY(-58%);
+    z-index: 1;
+    padding: 0 1.8em;
+
+    h1 {
+      margin-bottom: 0.4em;
+
+      @include mq(medium) {
+        font-size: 3.5em;
+      }
+    }
+
+    p {
+      color: var(--clr-white);
+      margin-bottom: 3em;
+      font-size: 1.1em;
+
+      @include mq(medium) {
+        font-size: 1.3em;
+      }
+    }
+  }
+
+  @include mq(medium) {
+    background: linear-gradient(123deg, #ff8f70 0%, #ff3d54 88%);
+    &::after {
+      transform: scale(3.5);
+      left: 34em;
+      top: -9em;
+    }
+  }
+}
